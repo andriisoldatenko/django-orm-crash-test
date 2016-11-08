@@ -7,6 +7,7 @@ class Student(models.Model):
 
 
 class Course(models.Model):
+    number = models.CharField(max_length=5, unique=True)
     title = models.CharField(max_length=10)
     credits = models.IntegerField()
 
@@ -19,10 +20,16 @@ class Professor(models.Model):
     rank = models.CharField(max_length=10)
     age = models.IntegerField()
 
+    class Meta:
+        unique_together = ("first_name", "last_name")
+
 
 class Take(models.Model):
     student_id = models.BigIntegerField()
-    course_id = models.BigIntegerField()
+    course_number = models.CharField(max_length=5)
+
+    class Meta:
+        unique_together = ("student_id", "course_number")
 
 
 class Teach(models.Model):
