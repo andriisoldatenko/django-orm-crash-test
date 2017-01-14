@@ -49,7 +49,10 @@ enchant            \
 libjpeg-dev        \
 libjpeg8-dev       \
 libpq-dev          \
-redis-server
+redis-server       \
+# to fix pip install pylibmc
+libmemcached-dev   \
+zlib1g-dev
 
 # Or for Ubuntu 64bit:
 # ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib

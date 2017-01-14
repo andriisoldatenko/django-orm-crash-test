@@ -2,12 +2,13 @@ from django.db import models
 
 
 class Student(models.Model):
+    number = models.AutoField(primary_key=True)
     name = models.CharField(max_length=10)
     age = models.IntegerField()
 
 
 class Course(models.Model):
-    number = models.CharField(max_length=5, unique=True)
+    number = models.CharField(max_length=5, primary_key=True)
     title = models.CharField(max_length=10)
     credits = models.IntegerField()
 
@@ -25,11 +26,11 @@ class Professor(models.Model):
 
 
 class Take(models.Model):
-    student_id = models.BigIntegerField()
+    student_number = models.BigIntegerField()
     course_number = models.CharField(max_length=5)
 
     class Meta:
-        unique_together = ("student_id", "course_number")
+        unique_together = ("student_number", "course_number")
 
 
 class Teach(models.Model):

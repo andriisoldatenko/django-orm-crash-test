@@ -12,7 +12,6 @@ TBD
 TBD
 
 ### Additional notes
-TBD
 
 
 
