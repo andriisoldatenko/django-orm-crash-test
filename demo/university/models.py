@@ -18,6 +18,9 @@ class Course(models.Model):
     title = models.CharField(max_length=10)
     credits = models.IntegerField()
 
+    def __str__(self):
+        return '{}: {}'.format(self.number, self.title)
+
     class Meta:
         db_table = 'course'
 
@@ -33,6 +36,9 @@ class Professor(models.Model):
     rank = models.CharField(max_length=10)
     age = models.IntegerField()
 
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
     class Meta:
         db_table = 'professor'
         unique_together = ("first_name", "last_name")
@@ -46,6 +52,9 @@ class Take(models.Model):
         db_table = 'take'
         unique_together = ("student", "course")
 
+    def __str__(self):
+        return '{} take {}'.format(self.student.name, self.course.number)
+
 
 class Teach(models.Model):
     professor = models.ForeignKey(Professor)
@@ -54,3 +63,6 @@ class Teach(models.Model):
     class Meta:
         db_table = 'teach'
         unique_together = ("professor", "course")
+
+    def __str__(self):
+        return '{} {}'.format(self.professor.last_name, self.course.number)
